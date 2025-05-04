@@ -8,6 +8,8 @@ public partial class Main : Node2D
     private Score score;
     private PackedScene ballScene;
 
+    private Timer spawnTimer;
+
     [Signal]
     public delegate void ScoreChangeEventHandler(int playerScore, int enemyScore);
 
@@ -15,7 +17,13 @@ public partial class Main : Node2D
     {
         ballScene = GD.Load<PackedScene>("res://objects/ball.tscn");
         score = new Score();
-        StartGame();
+        spawnTimer = GetNode<Timer>("SpawnTimer");
+        spawnTimer.Start();
+        // StartGame();
+    }
+
+    private void onTimerStartTimeout(){
+        CallDeferred(MethodName.StartGame);
     }
 
     private void StartGame()
@@ -36,9 +44,8 @@ public partial class Main : Node2D
         {
             score.enemy++;
         }
-        GD.Print($"Score {score}");
         EmitSignal(SignalName.ScoreChange, score.player, score.enemy);
-        StartGame();
+        spawnTimer.Start();
     }
 
 }

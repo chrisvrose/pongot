@@ -22,7 +22,7 @@ public partial class EnemyBat : AnimatableBody2D
     private void moveBatFromBallPosition(float floatDelta)
     {
         float deltaPosition = getDeltaYFromBall();
-        if (deltaPosition == float.PositiveInfinity)
+        if (deltaPosition == float.NegativeInfinity)
         {
             return;
         }

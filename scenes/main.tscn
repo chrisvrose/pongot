@@ -39,7 +39,7 @@ tile_set = SubResource("TileSet_0wfyh")
 position = Vector2(-162, 110)
 sync_to_physics = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpeedupTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
@@ -54,4 +54,8 @@ offset_bottom = -150.0
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_tefeu")
 
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="ScoreChange" from="." to="Ui" method="onPlayerScoreUpdate"]
+[connection signal="timeout" from="SpawnTimer" to="." method="onTimerStartTimeout"]
