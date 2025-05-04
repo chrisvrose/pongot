@@ -56,7 +56,7 @@ public partial class Ball : AnimatableBody2D
     }
 
     private void outOfScreen(){
-        bool didPlayerWin = this.Position.X <0;
+        bool didPlayerWin = this.Position.X > 0;
         EmitSignal(SignalName.BallOffscreen,didPlayerWin);
         QueueFree();
     }
