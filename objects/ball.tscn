@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dox42ji2mhns7"]
+
+[ext_resource type="Script" uid="uid://cyfynqrhjvlgd" path="res://scripts/Ball.cs" id="1_n16w4"]
+[ext_resource type="Texture2D" uid="uid://bx2dw3tchp6b8" path="res://assets/ball.png" id="2_3d6a7"]
+[ext_resource type="Material" uid="uid://bcybtawib64yk" path="res://assets/shaders/ball_shader.tres" id="2_wfynf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n16w4"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfynf"]
+radius = 9.0
+
+[node name="Ball" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_n16w4")
+sync_to_physics = false
+script = ExtResource("1_n16w4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wfynf")
+one_way_collision_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = ExtResource("2_wfynf")
+texture = ExtResource("2_3d6a7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="outOfScreen"]

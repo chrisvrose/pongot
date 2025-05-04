@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bcybtawib64yk"]
+
+[ext_resource type="Shader" uid="uid://n8d360qw5g83" path="res://assets/shaders/custom_color_from_black.gdshader" id="1_dipd1"]
+
+[resource]
+shader = ExtResource("1_dipd1")
+shader_parameter/col = Vector3(1, 1, 0)
