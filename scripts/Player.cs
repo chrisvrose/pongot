@@ -20,15 +20,8 @@ public partial class Player : AnimatableBody2D
 
     private void moveBatWithInput(float input, float floatDelta)
     {
-        var position = this.Position;
-
-
-        float deltaPosition = input * speed * floatDelta;
-        var newPositionY = position.Y + deltaPosition;
-        // GD.Print($"We were at {position.Y} wanting to move with {deltaPosition} and will now try to go to {newPositionY}");
-        position.Y = Mathf.Clamp(newPositionY, -outOfBound, outOfBound);
-
-        this.Position = position;
+        Vector2 moveNewVec = input * speed * floatDelta * Vector2.Down;
+        MoveAndCollide(moveNewVec);
     }
     
 }

@@ -17,7 +17,7 @@ public partial class Ball : AnimatableBody2D
     public override void _Ready()
     {
         r = new Random();
-        var realInitialVelocity = initialVelocity.Rotated(r.NextSingle()*360);
+        var realInitialVelocity = initialVelocity.Rotated((float)(r.NextSingle()*Math.Tau));
         velocity = realInitialVelocity;
 
     }
@@ -49,10 +49,10 @@ public partial class Ball : AnimatableBody2D
 
 
 
-    private void timerTick()
+    public void timerTick()
     {
         velocity.X *= speedFactor;
-        GD.Print($"Speed is now {velocity}");
+        // GD.Print($"Speed is now {velocity}");
     }
 
     private void outOfScreen(){

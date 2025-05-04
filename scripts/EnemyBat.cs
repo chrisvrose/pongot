@@ -26,13 +26,10 @@ public partial class EnemyBat : AnimatableBody2D
         {
             return;
         }
-
-        var position = this.Position;
-
-        var newPositionY = Mathf.MoveToward(position.Y, position.Y + deltaPosition, floatDelta * speed);
-        position.Y = Mathf.Clamp(newPositionY, -outOfBound, outOfBound);
-
-        this.Position = position;
+        
+        var maxDisplacement = floatDelta * speed;
+        var movementVectorY = Mathf.Clamp(deltaPosition * maxDisplacement,-maxDisplacement,maxDisplacement);
+        this.MoveAndCollide(Vector2.Down* movementVectorY);
     }
 
     private float getDeltaYFromBall()
