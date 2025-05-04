@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://epr32xoastm1"]
+[gd_scene load_steps=9 format=4 uid="uid://epr32xoastm1"]
 
 [ext_resource type="PackedScene" uid="uid://uxg1ew4w4g32" path="res://objects/Player.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://4geirm8yqics" path="res://Main.cs" id="1_tbgi4"]
+[ext_resource type="Script" uid="uid://4geirm8yqics" path="res://scripts/Main.cs" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://ipmigtrnal2o" path="res://objects/ui.tscn" id="2_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://dhxgxw01jd4g1" path="res://assets/back.png" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dq1kleq3xr6pk" path="res://objects/enemyBat.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://b86gr02smx0i3" path="res://scripts/Ui.cs" id="6_tefeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
 texture = ExtResource("3_sugp2")
@@ -43,3 +45,13 @@ autostart = true
 
 [node name="Player2" parent="." instance=ExtResource("4_jyhfs")]
 position = Vector2(159, 105)
+
+[node name="Ui" parent="." instance=ExtResource("2_tbgi4")]
+offset_left = -200.0
+offset_top = -150.0
+offset_right = -200.0
+offset_bottom = -150.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_tefeu")
+
+[connection signal="ScoreChange" from="." to="Ui" method="onPlayerScoreUpdate"]

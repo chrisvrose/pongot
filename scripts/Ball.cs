@@ -18,7 +18,7 @@ public partial class Ball : AnimatableBody2D
     {
         r = new Random();
         var realInitialVelocity = initialVelocity.Rotated(r.NextSingle()*360);
-        velocity = initialVelocity;
+        velocity = realInitialVelocity;
 
     }
 
