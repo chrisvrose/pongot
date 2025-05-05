@@ -22,6 +22,7 @@ physics_layer_1/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_jyhfs")
 
 [node name="MainLevel" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_tbgi4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -36,7 +37,7 @@ tile_map_data = PackedByteArray("AADz//b/AAAAAAAAAADz//f/AAABAAAAAADz//j/AAABAAA
 tile_set = SubResource("TileSet_0wfyh")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(-162, 110)
+position = Vector2(-175, 0)
 sync_to_physics = false
 
 [node name="SpeedupTimer" type="Timer" parent="."]
@@ -44,14 +45,11 @@ wait_time = 0.1
 autostart = true
 
 [node name="Player2" parent="." instance=ExtResource("4_jyhfs")]
-position = Vector2(159, 105)
+position = Vector2(168, 0)
 
 [node name="Ui" parent="." instance=ExtResource("2_tbgi4")]
-offset_left = -200.0
 offset_top = -150.0
-offset_right = -200.0
 offset_bottom = -150.0
-scale = Vector2(0.5, 0.5)
 script = ExtResource("6_tefeu")
 
 [node name="SpawnTimer" type="Timer" parent="."]

@@ -3,12 +3,9 @@ using System;
 
 public partial class Ball : AnimatableBody2D
 {
-    private readonly Vector2 initialVelocity = Vector2.Left * 100;
-    private const float speedFactor = 1.01f;
-
+    private const float INTIAL_VELOCITY_FACTOR = 100;
+    private const float SPEED_INCREASE_FACTOR = 1.01f;
     private Vector2 velocity;
-    Random r;
-
 
     [Signal]
     public delegate void BallOffscreenEventHandler(bool didPlayerWin);
@@ -16,8 +13,7 @@ public partial class Ball : AnimatableBody2D
 
     public override void _Ready()
     {
-        r = new Random();
-        var realInitialVelocity = initialVelocity.Rotated((float)(r.NextSingle()*Math.Tau));
+        var realInitialVelocity = INTIAL_VELOCITY_FACTOR*Vector2.Left.Rotated((float)(GD.Randf()*Math.Tau));
         velocity = realInitialVelocity;
 
     }
@@ -51,7 +47,7 @@ public partial class Ball : AnimatableBody2D
 
     public void timerTick()
     {
-        velocity.X *= speedFactor;
+        velocity.X *= SPEED_INCREASE_FACTOR;
         // GD.Print($"Speed is now {velocity}");
     }
 
