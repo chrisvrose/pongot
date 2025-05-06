@@ -27,7 +27,6 @@ public partial class Ball : AnimatableBody2D
         {
             onCollisionDetect(x);
         }
-        // this.ApplyCentralImpulse(colliderNormal*2);
     }
 
     private void onCollisionDetect(KinematicCollision2D x)

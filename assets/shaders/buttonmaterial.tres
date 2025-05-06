@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ce1hr55n6sxnb"]
+
+[ext_resource type="Shader" uid="uid://c2dv4wjc5jnun" path="res://assets/shaders/darken_shader.gdshader" id="1_k2vl4"]
+
+[resource]
+shader = ExtResource("1_k2vl4")
+shader_parameter/darkenFactor = 5.0

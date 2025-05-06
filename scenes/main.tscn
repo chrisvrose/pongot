@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://epr32xoastm1"]
+[gd_scene load_steps=17 format=4 uid="uid://epr32xoastm1"]
 
 [ext_resource type="PackedScene" uid="uid://uxg1ew4w4g32" path="res://objects/Player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4geirm8yqics" path="res://scripts/Main.cs" id="1_tbgi4"]
@@ -8,6 +8,8 @@
 [ext_resource type="Shader" uid="uid://c2dv4wjc5jnun" path="res://assets/shaders/darken_shader.gdshader" id="3_tipki"]
 [ext_resource type="PackedScene" uid="uid://dq1kleq3xr6pk" path="res://objects/enemyBat.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://b86gr02smx0i3" path="res://scripts/Ui.cs" id="6_tefeu"]
+[ext_resource type="Material" uid="uid://ce1hr55n6sxnb" path="res://assets/shaders/buttonmaterial.tres" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://bvk0dnuhgcuhk" path="res://assets/flat-light.png" id="10_ya4ey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
 texture = ExtResource("3_sugp2")
@@ -39,6 +41,14 @@ physics_layer_1/collision_layer = 0
 physics_layer_1/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_jyhfs")
 sources/2 = SubResource("TileSetAtlasSource_tipki")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("10_ya4ey")
+region = Rect2(416, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("10_ya4ey")
+region = Rect2(400, 80, 80, 80)
 
 [node name="MainLevel" type="Node2D"]
 texture_filter = 1
@@ -73,6 +83,22 @@ script = ExtResource("6_tefeu")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="up_touch_button" type="TouchScreenButton" parent="."]
+material = ExtResource("9_choun")
+position = Vector2(-155, 52)
+scale = Vector2(0.4, 0.4)
+texture_normal = SubResource("AtlasTexture_eb6dy")
+action = "move_up"
+visibility_mode = 1
+
+[node name="down_touch_button" type="TouchScreenButton" parent="."]
+material = ExtResource("9_choun")
+position = Vector2(-140, 92)
+scale = Vector2(0.4, 0.4)
+texture_normal = SubResource("AtlasTexture_trceg")
+action = "move_down"
+visibility_mode = 1
 
 [connection signal="ScoreChange" from="." to="Ui" method="onPlayerScoreUpdate"]
 [connection signal="timeout" from="SpawnTimer" to="." method="onTimerStartTimeout"]
