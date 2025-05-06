@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://uxg1ew4w4g32"]
+[gd_scene load_steps=3 format=3 uid="uid://uxg1ew4w4g32"]
 
-[ext_resource type="Texture2D" uid="uid://dmb4tuy3ky1hn" path="res://assets/bat.png" id="1_8ak8y"]
 [ext_resource type="Script" uid="uid://1mq8x7blom8i" path="res://scripts/Player.cs" id="1_gndvh"]
-[ext_resource type="Shader" uid="uid://n8d360qw5g83" path="res://assets/shaders/custom_color_from_black.gdshader" id="2_6vqvp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6j3j"]
-shader = ExtResource("2_6vqvp")
-shader_parameter/col = Vector3(0.4, 0.9, 0.125)
+[ext_resource type="Texture2D" uid="uid://cuxw0d4bxtsvi" path="res://assets/bat.png" id="2_gndvh"]
 
 [node name="Player" type="AnimatableBody2D"]
 script = ExtResource("1_gndvh")
@@ -15,5 +10,4 @@ script = ExtResource("1_gndvh")
 polygon = PackedVector2Array(2, -16, -2, -16, -4, 0, -2, 16, 2, 16, 4, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_f6j3j")
-texture = ExtResource("1_8ak8y")
+texture = ExtResource("2_gndvh")
