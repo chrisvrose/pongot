@@ -5,7 +5,8 @@ public partial class Main : Node2D
 {
 
 
-    private Score score;
+    private int playerScore;
+    private int enemyScore;
     private PackedScene ballScene;
 
     private Timer spawnTimer;
@@ -17,9 +18,11 @@ public partial class Main : Node2D
     public override void _Ready()
     {
         ballScene = GD.Load<PackedScene>("res://objects/ball.tscn");
-        score = new Score();
         spawnTimer = GetNode<Timer>("SpawnTimer");
         speedUpTimer = GetNode<Timer>("SpeedupTimer");
+
+        playerScore = 0;
+        enemyScore = 0;
         spawnTimer.Start();
     }
 
@@ -40,13 +43,13 @@ public partial class Main : Node2D
     {
         if (didPlayerWin)
         {
-            score.player++;
+            playerScore++;
         }
         else
         {
-            score.enemy++;
+            enemyScore++;
         }
-        EmitSignal(SignalName.ScoreChange, score.player, score.enemy);
+        EmitSignal(SignalName.ScoreChange, playerScore, enemyScore);
         spawnTimer.Start();
     }
 

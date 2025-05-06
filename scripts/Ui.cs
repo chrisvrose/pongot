@@ -9,8 +9,8 @@ public partial class Ui : Control
 
     public override void _Ready()
     {
-        enemyLabel = GetNode<Label>("Enemy");
-        playerLabel = GetNode<Label>("Player");
+        enemyLabel = GetNode<Label>("EnemyScore");
+        playerLabel = GetNode<Label>("PlayerScore");
     }
 
     public void onPlayerScoreUpdate(int player, int enemy)
